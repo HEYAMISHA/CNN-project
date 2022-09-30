@@ -76,10 +76,15 @@ df.head(25)
 
 x = df.drop('o',axis = 1)
 y = df['o']
+print(x)
+print(y)
+#checking x and y before running
 
 """Data is split here using train_test_split function imported from model selection into 28 X 28 dimension"""
 
 ## reshaping datainto csv file
+import numpy as np
+import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
@@ -175,7 +180,7 @@ reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=1, min_lr
 early_stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=2, verbose=0, mode='auto')
 
 
-history = model.fit(train_X, train_yOHE, epochs=1, callbacks=[reduce_lr, early_stop],  validation_data = (test_X,test_yOHE))
+history = model.fit(train_X, train_yOHE, epochs=20, callbacks=[reduce_lr, early_stop],  validation_data = (test_X,test_yOHE))
 
 
 model.summary()
